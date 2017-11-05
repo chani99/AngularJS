@@ -7,45 +7,61 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     
+    <style>
+                .mybook{
+                float: left;
+                margin: 20px;
+                padding: 20px;
+                background-color:white;
+
+                }
+            
+                body {
+                    background-color: rgb(206, 198, 198);
+                }
+                img{
+                    margin-bottom: 15px;
+
+                }
+    </style>
+            
+            
 
 </head>
-
-<body style="margin:auto 0;">
+<body>
     <h5>BOOKS</h5>
+
+
+        
 
     <div ng-controller="mybooks">
 
-        <div ng-repeat='(key, value) in book'>
-            <div class="row" style="margin-bottom:20px;">
+        <div class="mybook" ng-repeat='(key, value) in book'>
+            <img ng-src={{value.image}} width="{{value.img.width}}">
+            <figcaption>
+            {{value.book}}
+            <br>
+            {{value.name}}
+            <br>
+            <button class="btn btn-primary" ng-click="addItem(value.isbn)">Add Book to shopping cart</button>
+        </figcaption>
+         </div>
+
+    </div>
 
 
-            <div class="col-sm-2">
-            <img src={{value.image}}>
-            </div>
-            <div class="col-sm-3">   
-                    <h4>{{value.book}}</h4>
-                    <br>
-                    {{value.name}}
-                    <br>
-                    </div>
+    <div ng-controller="finish">
+        <p>Full name: {{user.firstname}} {{user.lastname}}</p>
+        <input placeholder="first name" ng-model="user.firstname">
+        <input placeholder="last name" ng-model="user.lastname">
         
-
-            <div class="col-sm-8">
-            </div>
-
-                    
-            </div>
-        </div>
-        <br>
-
+        <button ng-click="shoppingCart()" class="btn btn-lg btn-primary">
+                <span class="glyphicon glyphicon-shopping-cart"> </span> Go to shopping cart
+            </button>
     </div>
-
-    <div ng-controller="Testme">
-        {{test}}
-    </div>
-
+    <br>
 
 
 
