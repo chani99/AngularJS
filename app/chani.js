@@ -15,6 +15,33 @@ chani.service('cartService', function(){
     }
 });
 
+chani.filter('changeName', function(){
+    function ChangeBookName(book){
+return "APPLE";
+    }
+
+    return function(input){
+        for (let i = 0; i < input.length; i++) {
+        input[i].book = ChangeBookName(input[i].book);
+       }
+return input;
+    }
+});
+
+
+
+chani.filter('bestseller', function(){
+
+    return function(input, BS){
+        for (let i = 0; i < input.length; i++) {
+                if(input[i].isbn == BS){
+                    input[i].isBestSeller = true;
+                }
+       }
+       return input;
+    }       
+    
+});
 
 
 
@@ -33,11 +60,19 @@ chani.controller('finish', function finish($scope, cartService){
 
 
 chani.controller('mybooks', function CreateBook($scope, cartService){
-    $scope.book = [
-        {book: 'Book1', name: 'Mical', image:'book1.jpg', isbn: 1234},
-        {book: 'Book2', name: 'Chani', image:'book2.jpg', isbn: 5678},
-        {book: 'Book3', name: 'Hadar', image:'book3.jpg', isbn: 91011},
-    ];
+ function Book(book, name, image, isbn) {
+        this.name = name;
+        this.book = book;
+        this.image = image;
+        this.isbn = isbn;        
+        this.isBestSeller = false;
+    }
+
+    $scope.book =[
+    new Book('Book1', 'Mical','book1.jpg',1234 ),
+    new Book('Book2', 'Mical','book1.jpg', 4578),
+    new Book('Book3', 'Mical','book1.jpg', 2212)];
+    
 
     $scope.addItem = function(idbn){
         cartService.addToCart(idbn);
