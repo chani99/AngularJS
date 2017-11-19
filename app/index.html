@@ -2,12 +2,13 @@
 <html lang="en" ng-app="chani">
 
 <head>
+        
     <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="../node_modules/angular-route/angular-route.min.js"></script>    
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"></script>
+    <link href="../node_modules/bootstrap/dist/js/bootstrap.min.js" rel="stylesheet"></script>
     <script src="chani.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
      
     <style>
                 .mybook{
@@ -31,40 +32,30 @@
 
 </head>
 <body>
-    <h5>BOOKS</h5>
+    <header>
+            <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <a class="navbar-brand" href="#">BOOK SHOP</a>
+                      </div>
+                      <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#">Home page</a></li>
+                        <li> 
+                            <a href="#!order">Order</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                    
+                  
+  
+    </header>
+
+    <div ng-view></div>
 
 
         
 
-    <div ng-controller="mybooks">
-
-        <div class="mybook" ng-repeat='(key, value) in book | filter:search | bestseller:1234'>
-            <img ng-src={{value.image}} width="{{value.img.width}}">
-            <figcaption>
-            {{value.book}} <span ng-if="value.isBestSeller"> best seller</span>
-            <br>
-            {{value.name}}
-            <br>
-            <button class="btn btn-primary" ng-click="addItem(value.isbn)">Add Book to shopping cart</button>
-        </figcaption>
-         </div>
-         <br>
-         <input ng-model="search">
-         
-
-    </div>
-
-
-    <div ng-controller="finish">
-        <p>Full name: {{user.firstname}} {{user.lastname}}</p>
-        <input placeholder="first name" ng-model="user.firstname">
-        <input placeholder="last name" ng-model="user.lastname">
-        
-        <button ng-click="shoppingCart()" class="btn btn-lg btn-primary">
-                <span class="glyphicon glyphicon-shopping-cart"> </span> Go to shopping cart
-            </button>
-    </div>
-    <br>
 
 
 

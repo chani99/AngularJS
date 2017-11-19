@@ -1,4 +1,16 @@
-var chani = angular.module('chani', []);
+var chani = angular.module('chani', ['ngRoute']);
+
+chani.config(function($routeProvider){
+    $routeProvider
+    .when("/",{
+        templateUrl: "books.html"
+    })
+    .when("/order",{
+        templateUrl: "order.html"
+        
+    })
+});
+
 
 chani.service('cartService', function(){
     this.booksInCart = [];
@@ -70,8 +82,8 @@ chani.controller('mybooks', function CreateBook($scope, cartService){
 
     $scope.book =[
     new Book('Book1', 'Mical','book1.jpg',1234 ),
-    new Book('Book2', 'Mical','book1.jpg', 4578),
-    new Book('Book3', 'Mical','book1.jpg', 2212)];
+    new Book('Book2', 'Chani','book2.jpg', 4578),
+    new Book('Book3', 'Zvi','book3.jpg', 2212)];
     
 
     $scope.addItem = function(idbn){
