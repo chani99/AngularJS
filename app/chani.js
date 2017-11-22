@@ -71,7 +71,11 @@ chani.controller('finish', function finish($scope, cartService){
 }); 
 
 
+
 chani.controller('mybooks', function CreateBook($scope, cartService){
+
+
+    
  function Book(book, name, image, isbn) {
         this.name = name;
         this.book = book;
@@ -79,6 +83,7 @@ chani.controller('mybooks', function CreateBook($scope, cartService){
         this.isbn = isbn;        
         this.isBestSeller = false;
     }
+
 
     $scope.book =[
     new Book('Book1', 'Mical','book1.jpg',1234 ),
@@ -90,8 +95,16 @@ chani.controller('mybooks', function CreateBook($scope, cartService){
         cartService.addToCart(idbn);
     }
 
+
+
 }); 
 
-
+chani.directive('ad', function(){
+    return  {
+        template: function(elem, attr) { 
+            return "<span style='color:red'>Add " + attr.name + ' to favorites</span>';
+        }
+    };
+});
         
 
